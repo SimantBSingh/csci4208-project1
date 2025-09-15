@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            padding-top: 2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 1rem auto 2rem;
+            width: 60%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        p {
+            color: white;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .main-history-book-container {
+            line-height: 1.6;
+            color: white;
+        }
+
+        .paths {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            max-width: 90vw;
+        }
+
+        .pyramid-path,
+        .desert-path {
+            position: relative;
+            max-width: 500px;
+            border-radius: 9px;
+        }
+
+        .pyramid-path:hover,
+        .desert-path:hover {
+            transform: scale(1.03);
+        }
+
+        .pyramid-path a,
+        .desert-path a {
+            display: block;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .pyramid-path img,
+        .desert-path img {
+            width: 100%;
+            display: block;
+        }
+
+        .pyramid-path .overlay,
+        .desert-path .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .pyramid-path h4,
+        .desert-path h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .pyramid-path p,
+        .desert-path p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 90%;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main-history-book-container">
+        <h1>Mystery At The Library</h1>
+        <hr>
+        <h2>The History Book</h2>
+        <p>
+            Two paths lie before you—one of shadow,
+            one of sun. Both lead to destiny, but only you can choose the road to walk.
+        </p>
+
+        <div class="paths">
+            <div class="pyramid-path">
+                <a href="pyramid.html">
+                    <img src="assets/pyramid.jpeg" />
+                    <div class="overlay">
+                        <h4>The Pyramids</h4>
+                        <p>
+                            The pyramid looms before you, its ancient stones glowing faintly
+                            beneath the moonlight. Inside, narrow corridors twist like a labyrinth...
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="desert-path">
+                <a href="desert.html">
+                    <img src="assets/desert.jpeg" />
+                    <div class="overlay">
+                        <h4>The Desert</h4>
+                        <p>
+                            The desert swallows the horizon, its endless dunes shimmering under the relentless sun...
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

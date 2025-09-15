@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+        .forest-container {
+            line-height: 1.6;
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #ddd;
+            margin: 1rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            width: 60%;
+            margin: 1rem auto 2rem;
+        }
+
+        p {
+            color: #ccc;
+            max-width: 700px;
+            margin: 0.5rem auto 1.5rem;
+            line-height: 1.6;
+        }
+
+        button {
+            background: #4cafef;
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            margin: 0.5rem;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        input[type="number"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #666;
+            background: #222;
+            color: #fff;
+            width: 80px;
+            text-align: center;
+            margin: 0.5rem 0 1rem;
+        }
+
+        img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            margin-top: 1.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .forest-card {
+            position: relative;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .forest-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .forest-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .forest-card #secret-from-tree {
+            font-style: italic;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="forest-container">
+        <h1>The Fantasy Book</h1>
+        <hr>
+        <h2>The Forest</h2>
+        <p>
+            The trees talk, they can tell you secrets to get out of here or they lead you to death. <br>
+            You can keep asking for secrets but only one work. <br>
+            Enter the secrets in the box to find out if you survive or die.
+        </p>
+        <div class="forest-card">
+            <img src="assets/trees.jpeg" alt="Enchanted Forest" />
+            <div class="overlay">
+                <button type="button" onclick="talkToTree()">Talk to trees</button>
+                <p id="secret-from-tree"></p>
+            </div>
+        </div>
+        <label for="secret">Enter the secret here: </label>
+        <input type="number" name="user-secret-input">
+        <button type="button" onclick="checkFate()">Check fate</button>
+
+    </section>
+    <script>
+        const secret = Math.floor((Math.random() * 10) + 1);
+        function talkToTree() {
+            let message = Math.floor((Math.random() * 10) + 1);
+            document.getElementById("secret-from-tree").innerText = `Secret from tree: ${message}`;
+        }
+
+        function checkFate() {
+            let input = document.querySelector('input[name="user-secret-input"').value;
+            if (input == secret) {
+                window.location.href = "victory.html?setting=forest&book-type=Fantasy";
+            } else {
+                window.location.href = "gameover.html?setting=forest&book-type=Fantasy";
+            }
+        }
+    </script>
+</body>
+
+</html>

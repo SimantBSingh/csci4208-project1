@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            padding-top: 2rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 1rem auto 2rem;
+            width: 60%;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        p {
+            color: white;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .main-fantasy-book-container {
+            line-height: 1.6;
+            color: white;
+        }
+
+        .paths {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            max-width: 90vw;
+        }
+
+        .forest-path,
+        .castle-path {
+            position: relative;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .forest-path:hover,
+        .castle-path:hover {
+            transform: scale(1.03);
+        }
+
+        .forest-path a,
+        .castle-path a {
+            display: block;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .forest-path img,
+        .castle-path img {
+            width: 100%;
+            display: block;
+        }
+
+        .forest-path .overlay,
+        .castle-path .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .forest-path h4,
+        .castle-path h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .forest-path p,
+        .castle-path p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 90%;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main-fantasy-book-container">
+        <h1>Mystery At The Library</h1>
+        <hr>
+        <h2>The Fantasy Book</h2>
+        <p>
+            The book's cover shimmers with emerald leaves and silver stars, its pages unfolding into
+            a realm alive with enchantment. A forest whispers in one direction, its trees leaning close
+            as if eager to speak. In the other, the silhouette of a grand castle rises beyond the mist,
+            its towers glowing with hidden power. Two paths stretch before you—one promising wonder,
+            the other destiny.
+        </p>
+
+        <div class="paths">
+            <div class="forest-path">
+                <a href="forest.html">
+                    <img src="assets/forest.jpeg" />
+                    <div class="overlay">
+                        <h4>The Forest</h4>
+                        <p>
+                            The forest breathes with enchantment, its canopy glowing green as shafts of light
+                            pierce the leaves. Ancient trees lean close, their bark etched with faces that
+                            murmur in low, curious tones...
+                        </p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="castle-path">
+                <a href="castle.html">
+                    <img src="assets/castle.jpeg" />
+                    <div class="overlay">
+                        <h4>The Castle</h4>
+                        <p>
+                            The castle rises high above the land, its spires cutting through the mist
+                            like silver blades. The stone walls shimmer faintly with runes, and the great
+                            gate stands open as if in silent invitation...
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

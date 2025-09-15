@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystery at Library</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <style>
+    .container {
+      position: relative;
+      height: 100vh;
+      background: url("./assets/main-library-hero.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    h1 {
+      color: white;
+      font-size: 3em;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin-bottom: 30px;
+    }
+
+    p {
+      max-width: 800px;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      margin-bottom: 30px;
+      line-height: 1.6;
+
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: white;
+      background: #007bff;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <h1>Mystery at the Library</h1>
+    <p>
+      The library is silent, its towering shelves stretching into the shadows as
+      the moonlight filters weakly through cracked windows. Dust lingers in the
+      air, and every creak of the wooden floor echoes like a whisper of
+      something long forgotten. Before you lies a table scattered with ancient
+      books, their covers worn and titles nearly erased by time.<br />
+      Each book holds a story, but also a secret—your secret. Once you choose
+      and open one, its fate will intertwine with your own, leading you deeper
+      into the mystery that waits in the dark.
+    </p>
+    <a href="main.html">
+      <button onclick="startGame()">Play</button>
+    </a>
+  </section>
+</body>
+
+</html>

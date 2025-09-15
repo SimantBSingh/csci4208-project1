@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+        .desert-container {
+            line-height: 1.6;
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin: 1rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            width: 60%;
+            margin: 1rem auto 2rem;
+        }
+
+        img {
+            max-width: 500px;
+            width: 100%;
+            border-radius: 8px;
+            margin: 1rem auto;
+            display: block;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        p {
+            color: white;
+            max-width: 800px;
+            margin: 0.5rem auto 1.5rem;
+            line-height: 1.6;
+        }
+
+        table {
+            margin: 2rem auto;
+            border-collapse: collapse;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        th {
+            color: yellow;
+            font-weight: bold;
+        }
+
+        td {
+            color: white;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        button {
+            background: #4cafef;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+
+        input[type="number"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #666;
+            background: #222;
+            color: white;
+            width: 80px;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: row;
+            gap: 30px;
+            align-items: center;
+            width: 80vw;
+        }
+
+        .desert-card {
+            position: relative;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+        }
+
+        .desert-card img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .desert-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .desert-card .overlay p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: yellow;
+            max-width: 90%;
+        }
+
+
+        #town-alert,
+        #coins-alert,
+        #key-alert {
+            font-weight: bold;
+            margin-top: 1rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        #town-alert {
+            color: green;
+        }
+
+        #coins-alert {
+            color: red;
+        }
+
+        #key-alert {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="desert-container">
+        <h1>The History Book</h1>
+        <hr>
+        <h2>The Deserts</h2>
+        <p>Find the map that helps you to find the way home.</p>
+        <div class="main-content">
+            <div class="desert-card">
+                <img src="assets/desert-towns.png" alt="Desert Towns">
+                <div class="overlay">
+                    <p>
+                        Moving from town to town costs you 100ml of water.<br>
+                        If you want more water you need to pay 10 coins.<br>
+                        If you want to know if the town has the key of the vault containing the map,<br>
+                        you have to pay 5 coins.<br>
+                        There is a chance that the town doesn't have a key,<br>
+                        but you still have to pay to know.
+                    </p>
+                </div>
+            </div>
+            <div class="table-content">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Quantity</th>
+                    </tr>
+                    <tr>
+                        <th>Water</th>
+                        <td><span id="water-value">200</span>ml</td>
+                    </tr>
+                    <tr>
+                        <th>Coins</th>
+                        <td id="coins-value">40</td>
+                    </tr>
+                    <tr>
+                        <th>Keys</th>
+                        <td id="keys-value">0</td>
+                    </tr>
+                </table>
+                <div class="get-btns">
+                    <button type="button" onclick="getWater()">Get more water</button>
+                    <button type="button" onclick="getKey()">Get key</button>
+                    <button type="button" onclick="useKey()">Use key</button>
+                </div>
+            </div>
+        </div>
+
+        <p id="town-alert"></p>
+        <label for="town">Type the number of the town you want to go to</label>
+        <input type="number" id="town" name="town" />
+        <button type="button" onclick="travelToTown()">Go!</button>
+        <br>
+        <p id="coins-alert"> </p>
+        <p id="key-alert"></p>
+    </section>
+    <script>
+        const randomTown = Math.floor((Math.random() * 6) + 1);
+        console.log(randomTown);
+
+        function getWater() {
+            let coins = document.getElementById("coins-value").innerText;
+            if (coins >= 10) {
+                let water = document.getElementById("water-value").innerText;
+                document.getElementById("water-value").innerText = (parseInt(water) + 100);
+                document.getElementById("coins-value").innerText = (parseInt(coins) - 10);
+            } else {
+                document.getElementById("coins-alert").innerText = "No more coins to spend on water.";
+            }
+
+            if (chanceOfWin() === false) {
+                window.location.href = "gameover.html?setting=desert&&book-type=History";
+            }
+        }
+
+        function travelToTown() {
+            let water = document.getElementById("water-value").innerText;
+            let town = document.querySelector('input[name=town]').value;
+            if (parseInt(town) >= 1 && parseInt(town) <= 6) {
+                if (water >= 100) {
+                    document.getElementById("water-value").innerText = (parseInt(water) - 100);
+                    document.getElementById("town-alert").innerText = `Went to town number ${town}`;
+                } else {
+                    let coins = document.getElementById("coins-value").innerText;
+                    if (coins < 10) document.getElementById("town-alert").innerText = "No more water to travel.";
+                }
+            } else alert("Select a town from 1 to 6.");
+
+            if (chanceOfWin() === false) {
+                window.location.href = "gameover.html?setting=desert&&book-type=History";
+            }
+        }
+
+        function getKey() {
+            let town = document.querySelector('input[name="town"]').value;
+            let keys = document.getElementById('keys-value').innerText;
+            let coins = document.getElementById("coins-value").innerText;
+
+            if (coins >= 5) {
+                document.getElementById("coins-value").innerText = (parseInt(coins) - 5);
+                if (town == randomTown && keys != 1) {
+                    document.getElementById('keys-value').innerText = '1';
+                    document.getElementById('key-alert').innerText = "You have found the key. Use it to get the map.";
+                } else {
+                    document.getElementById('key-alert').innerText = "Sorry, we dont have the key. Keep looking.";
+                }
+            } else {
+                document.getElementById('key-alert').innerText = "You don't have enough money for the key.";
+            }
+
+            if (chanceOfWin() === false) {
+                window.location.href = "gameover.html?setting=desert&book-type=History";
+            }
+        }
+
+        function useKey() {
+            let keys = document.getElementById('keys-value').innerText;
+            if (keys == 1) {
+                window.location.href = "victory.html?setting=desert&book-type=History";
+            } else document.getElementById('key-alert').innerText = "You don't have a key to use.";
+        }
+
+        function chanceOfWin() {
+            let keys = document.getElementById('keys-value').innerText;
+            let coins = document.getElementById("coins-value").innerText;
+            let water = document.getElementById("water-value").innerText;
+
+            if (coins < 5) {
+                if (keys < 1) {
+                    if (water < 100) {
+                        return false
+                    }
+                }
+            }
+            return true;
+        }
+
+
+    </script>
+</body>
+
+</html>

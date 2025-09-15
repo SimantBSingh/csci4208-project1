@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <style>
+        .castle-container {
+            line-height: 1.6;
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: white;
+            margin: 1rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            width: 60%;
+            margin: 1rem auto 2rem;
+        }
+
+        p {
+            color: white;
+            max-width: 700px;
+            margin: 0.5rem auto 1.5rem;
+            line-height: 1.6;
+        }
+
+        table {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        th {
+            color: orange;
+            font-weight: bold;
+        }
+
+        td {
+            color: white;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        button {
+            background: #4cafef;
+            color:white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+
+        span {
+            font-weight: bold;
+            color: yellow;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: row;
+            gap: 30px;
+            align-items: center;
+            width: 80vw;
+        }
+
+        .castle-card {
+            position: relative;
+            max-width: 600px;
+            border-radius: 8px;
+        }
+
+        .castle-card img {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .castle-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .castle-card .overlay p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: white
+        }
+    </style>
+</head>
+
+<body>
+    <section class="castle-container">
+
+
+        <h1>The Fantasy Book</h1>
+        <hr>
+        <h2>The Castle</h2>
+        <div class="main-content">
+            <div class="castle-card">
+                <img src="assets/king.jpeg" alt="The King" />
+                <div class="overlay">
+                    <p>
+                        Find a way to kill the king.<br>
+                        Buy the items you need for the fight.<br>
+                        Blade = -10 king's hp<br>
+                        Grenade = -20 king's hp<br>
+                        Poison = -10 king's hp
+                    </p>
+                </div>
+            </div>
+            <table>
+                <tr>
+                    <th>Items</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr>
+                    <th>Blades</th>
+                    <td id="blades">0</td>
+                    <td>
+                        <button type="button" onclick="getMoreBlades()">10 coins</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="attack('blades',10)">Attack!</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Poison</th>
+                    <td id="poisons">0</td>
+                    <td>
+                        <button type="button" onclick="getMorePoisons()">15 coins</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="attack('poisons', 10)">Attack!</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Grenades</th>
+                    <td id="grenades">0</td>
+                    <td>
+                        <button type="button" onclick="getMoreGrenades()">20 coins</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="attack('grenades',20)">Attack!</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Health</th>
+                    <td id="health">100</td>
+                    <td>
+                        <button type="button" onclick="getMoreHealth()">30 coins</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <p>Coins <span id="coins">100</span><br></p>
+        <p>King's Health <span id="kings-health">100</span><br></p>
+
+
+    </section>
+
+    <script>
+        function getMoreBlades() {
+            getMoreOf('blades', 10, 1);
+        }
+
+        function getMorePoisons() {
+            getMoreOf('poisons', 15, 1);
+        }
+
+        function getMoreGrenades() {
+            getMoreOf('grenades', 20, 1);
+        }
+
+        function getMoreHealth() {
+            getMoreOf('health', 30, 20);
+        }
+
+
+        function getMoreOf(itemId, itemPrice, quantity) {
+            let coins = getCoin();
+            if (itemPrice <= coins) {
+                let item = parseInt(document.getElementById(itemId).textContent);
+                document.getElementById(itemId).textContent = (item + quantity);
+                changeCoinText(coins, itemPrice);
+            }
+        }
+
+        function getCoin() {
+            return parseInt(document.getElementById('coins').textContent);
+        }
+
+        function changeCoinText(coins, price) {
+            document.getElementById('coins').textContent = (coins - price);
+        }
+
+        function attack(weapon, weaponDamage) {
+            let weaponQuantity = parseInt(document.getElementById(weapon).textContent);
+            if (weaponQuantity > 0) {
+                if (weapon !== 'blades') {
+                    document.getElementById(weapon).textContent = weaponQuantity - 1;
+                }
+
+                let playerHealth = document.getElementById('health').textContent;
+                let kingsHealth = document.getElementById('kings-health').textContent;
+                let kingsPower = Math.floor((Math.random() * 10) + 15);
+
+                let newKingsHealth = parseInt(kingsHealth) - weaponDamage;
+                let newPlayerHealth = parseInt(playerHealth) - kingsPower;
+
+                if (newKingsHealth <= 0) {
+                    window.location.href = "victory.html?setting=castle&book-type=Fantasy";
+                } else if (newPlayerHealth <= 0) {
+                    window.location.href = "gameover.html?setting=castle&book-type=Fantasy";
+                } else {
+                    document.getElementById('health').textContent = (newPlayerHealth);
+                    document.getElementById('kings-health').textContent = (newKingsHealth);
+                }
+
+            } else {
+                alert("You don't have enough " + weapon + " to attack!");
+            }
+        }
+    </script>
+</body>
+
+</html>

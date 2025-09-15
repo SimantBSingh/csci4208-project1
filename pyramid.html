@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <style>
+        h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin: 0.5rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            width: 50%;
+            margin: 1rem auto;
+        }
+
+        p,
+        label {
+            color: white;
+            font-size: 1rem;
+            margin: 0.5rem 0 1rem;
+        }
+
+        img {
+            max-width: 600px;
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+            display: block;
+        }
+
+        input[type="number"] {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid #666;
+            background: #222;
+            color: white;
+            width: 60px;
+            text-align: center;
+            margin: 0.5rem;
+        }
+
+        button {
+            background: #4cafef;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #329cd7;
+            transform: scale(1.05);
+        }
+
+        .history-book-container {
+            line-height: 1.6;
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pyramid-card {
+            position: relative;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+        }
+
+        .pyramid-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .pyramid-card .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            inset: 0;
+            text-align: center;
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pyramid-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pyramid-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="history-book-container">
+        <h2>The History Book</h2>
+        <hr>
+        <div class="pyramid-card">
+            <img src="assets/pyramid-doors.jpeg" alt="Pyramid Doors" />
+            <div class="overlay">
+                <h2>The Pyramids</h2>
+                <p>
+                    You have entered the pyramid. Find a way to get the treasure and survive on the way out.
+                </p>
+            </div>
+        </div>
+
+        <label for="path-selection">Select the way you want to go through:</label>
+        <input id="path-selection" type="number" name="path-selection" />
+        <button type="button" onclick="selectWay()">Go to selected way</button>
+
+    </section>
+    <script>
+        function selectWay() {
+            let selection = document.querySelector('input[name="path-selection"]').value;
+            let randomCorrectWay = Math.floor((Math.random() * 3) + 1);
+            if (selection > 3 || selection <= 0) alert("Select a number from 1 to 3");
+            if (selection == randomCorrectWay) window.location.href = "victory.html?setting=pyramid&book-type=History";
+            else window.location.href = "gameover.html?setting=pyramid&book-type=History"
+        }
+    </script>
+</body>

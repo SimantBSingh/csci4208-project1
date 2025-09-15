@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mystery At The Library</title>
+    <link rel="icon" href="assets/icon.jpg" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <style>
+        h3 {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #ddd;
+        }
+
+        form {
+            text-align: center;
+            width: 60%;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            margin: 0 auto 2rem auto;
+        }
+
+        fieldset {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label {
+            margin-right: 1.5rem;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        button {
+            background: #4cafef;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #329cd7;
+            transform: scale(1.05);
+        }
+
+        .book-options-container {
+            line-height: 1.6;
+            color: #eee;
+        }
+
+        .books {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .book-card {
+            position: relative;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .book-card:hover {
+            transform: scale(1.03);
+        }
+
+        .book-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .book-card .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            inset: 0;
+            text-align: center;
+            color: #fff;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .book-card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.6rem;
+        }
+
+        .book-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="book-options-container">
+        <form>
+            <fieldset>
+                <legend>Choose the book you want to read:</legend>
+
+                <input type="radio" name="book-choice" id="history-book" value="history-book" />
+                <label for="history-book">History Book</label>
+
+                <input type="radio" name="book-choice" id="fantasy-book" value="fantasy-book" />
+                <label for="fantasy-book">Fantasy Book</label>
+            </fieldset>
+            <button type="button" onclick="redirectToBook()">Go!</button>
+        </form>
+        <div class="books">
+            <div class="book-card">
+                <img src="assets/history-book.jpeg" alt="History Book" />
+                <div class="overlay">
+                    <h3>The History Book</h3>
+                    <p>
+                        The book glows with golden hieroglyphs, opening to a world of endless
+                        sands and towering pyramids. Whispers of pharaohs call you forward,
+                        promising treasures and secrets hidden deep within the desert's heart.
+                    </p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="assets/fantasy-book.jpeg" alt="Fantasy Book" />
+                <div class="overlay">
+                    <h3>The Fantasy Book</h3>
+                    <p>
+                        The pages bloom with emerald light, revealing a forest alive with
+                        whispering trees and hidden paths. Somewhere beyond the shadows, a
+                        forgotten castle waits, its gates calling you to discover the magic
+                        within.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function redirectToBook() {
+            let selection = document.querySelector(
+                'input[name="book-choice"]:checked'
+            )?.value;
+            switch (selection) {
+                case "history-book":
+                    window.location.href = "history-book.html";
+                    break;
+                case "fantasy-book":
+                    window.location.href = "fantasy-book.html";
+                    break;
+                default:
+                    alert("You need to select a book.");
+            }
+        }
+    </script>
+</body>
+
+</html>
